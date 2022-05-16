@@ -14,7 +14,7 @@ public class TodoEntity {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private UserEntity user;
+    private UserEntityTest user;
 
     public String getDescription() {
         return description;
@@ -47,11 +47,11 @@ public class TodoEntity {
         this.completed = completed;
     }
 
-    public UserEntity getUser() {
+    public UserEntityTest getUser() {
         return user;
     }
 
-    public void setUser(UserEntity user) {
+    public void setUser(UserEntityTest user) {
         this.user = user;
     }
 }

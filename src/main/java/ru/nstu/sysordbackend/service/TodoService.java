@@ -3,7 +3,7 @@ package ru.nstu.sysordbackend.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.nstu.sysordbackend.entity.TodoEntity;
-import ru.nstu.sysordbackend.entity.UserEntity;
+import ru.nstu.sysordbackend.entity.UserEntityTest;
 import ru.nstu.sysordbackend.exception.TodoNotFoundException;
 import ru.nstu.sysordbackend.exception.UserNotFoundException;
 import ru.nstu.sysordbackend.model.Todo;
@@ -20,8 +20,8 @@ public class TodoService {
 
     public Todo createTodo(TodoEntity todo, Long userId) throws UserNotFoundException {
         if (userRepository.findById(userId).isPresent()){
-            UserEntity user = userRepository.findById(userId).get();
-            todo.setUser(user);
+            //UserEntityTest user = userRepository.findById(userId).get();
+            todo.setUser(new UserEntityTest());
             return Todo.toModel(todoRepository.save(todo));
         }
         else throw new UserNotFoundException("Пользователь не найден");

@@ -7,6 +7,7 @@ import java.util.List;
 @Table(name = "dishes_categories")
 public class DishesCategoryEntity {
     @Id
+    @Column(name = "id", nullable = false, insertable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;

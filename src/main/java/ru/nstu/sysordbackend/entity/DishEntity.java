@@ -1,11 +1,13 @@
 package ru.nstu.sysordbackend.entity;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "dishes")
 public class DishEntity {
     @Id
+    @Column(name = "id", nullable = false, insertable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
@@ -17,6 +19,9 @@ public class DishEntity {
     @ManyToOne
     @JoinColumn(name = "category_id")
     private DishesCategoryEntity category;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "dish")
+    private List<OrderItemEntity> orderItems;
 
     public Long getId() {
         return id;

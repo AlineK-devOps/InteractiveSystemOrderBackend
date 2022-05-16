@@ -1,18 +1,18 @@
 package ru.nstu.sysordbackend.model;
 
-import ru.nstu.sysordbackend.entity.UserEntity;
+import ru.nstu.sysordbackend.entity.UserEntityTest;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class User {
+public class UserTest {
     private Long id;
     private String login;
     private String name;
     private List<Todo> todos;
 
-    public static User toModel(UserEntity entity){
-        User model = new User();
+    public static UserTest toModel(UserEntityTest entity){
+        UserTest model = new UserTest();
         model.setId(entity.getId());
         model.setLogin(entity.getLogin());
         model.setName(entity.getName());
