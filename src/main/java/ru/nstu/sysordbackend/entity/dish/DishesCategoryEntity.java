@@ -1,4 +1,4 @@
-package ru.nstu.sysordbackend.entity;
+package ru.nstu.sysordbackend.entity.dish;
 
 import javax.persistence.*;
 import java.util.List;

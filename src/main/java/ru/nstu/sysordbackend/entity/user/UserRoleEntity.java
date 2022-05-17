@@ -1,4 +1,4 @@
-package ru.nstu.sysordbackend.entity;
+package ru.nstu.sysordbackend.entity.user;
 
 import javax.persistence.*;
 

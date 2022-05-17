@@ -1,7 +1,6 @@
 package ru.nstu.sysordbackend.model;
 
-import ru.nstu.sysordbackend.entity.DishEntity;
-import ru.nstu.sysordbackend.entity.TodoEntity;
+import ru.nstu.sysordbackend.entity.dish.DishEntity;
 
 import java.util.List;
 import java.util.stream.Collectors;

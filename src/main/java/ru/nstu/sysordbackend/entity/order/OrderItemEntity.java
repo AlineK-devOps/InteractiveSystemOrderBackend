@@ -1,10 +1,9 @@
-package ru.nstu.sysordbackend.entity;
+package ru.nstu.sysordbackend.entity.order;
 
-import ru.nstu.sysordbackend.model.OrderItemModel;
-import ru.nstu.sysordbackend.model.OrderModel;
+import ru.nstu.sysordbackend.entity.user.UserEntity;
+import ru.nstu.sysordbackend.entity.dish.DishEntity;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Table(name = "order_list")

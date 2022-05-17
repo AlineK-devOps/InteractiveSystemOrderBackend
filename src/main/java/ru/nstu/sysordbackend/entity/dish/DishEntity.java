@@ -1,4 +1,6 @@
-package ru.nstu.sysordbackend.entity;
+package ru.nstu.sysordbackend.entity.dish;
+
+import ru.nstu.sysordbackend.entity.order.OrderItemEntity;
 
 import javax.persistence.*;
 import java.util.List;
@@ -14,7 +16,11 @@ public class DishEntity {
     private String composition;
     private Integer price;
     private Integer weight;
+
+    private Integer cooking_time;
     private String imageUrl;
+
+    private String recipe;
 
     @ManyToOne
     @JoinColumn(name = "category_id")
@@ -49,5 +55,17 @@ public class DishEntity {
 
     public String getCategory() {
         return category.getName();
+    }
+
+    public Integer getCooking_time() {
+        return cooking_time;
+    }
+
+    public List<OrderItemEntity> getOrderItems() {
+        return orderItems;
+    }
+
+    public String getRecipe() {
+        return recipe;
     }
 }

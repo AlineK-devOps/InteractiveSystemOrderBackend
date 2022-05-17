@@ -1,4 +1,7 @@
-package ru.nstu.sysordbackend.entity;
+package ru.nstu.sysordbackend.entity.user;
+
+import ru.nstu.sysordbackend.entity.order.OrderEntity;
+import ru.nstu.sysordbackend.entity.order.OrderItemEntity;
 
 import javax.persistence.*;
 import java.util.List;

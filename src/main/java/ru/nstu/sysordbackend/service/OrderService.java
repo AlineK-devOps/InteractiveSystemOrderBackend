@@ -2,7 +2,9 @@ package ru.nstu.sysordbackend.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ru.nstu.sysordbackend.entity.*;
+import ru.nstu.sysordbackend.entity.order.OrderEntity;
+import ru.nstu.sysordbackend.entity.order.OrderItemEntity;
+import ru.nstu.sysordbackend.entity.order.OrderItemStatusEntity;
 import ru.nstu.sysordbackend.model.OrderItemModel;
 import ru.nstu.sysordbackend.model.OrderModel;
 import ru.nstu.sysordbackend.repository.*;
@@ -54,5 +56,25 @@ public class OrderService {
         }
         orderEntity.setOrderItems(orderList);
         orderRepository.save(orderEntity);
+    }
+
+    public Object getOrdersForCook() {
+        return new Object();
+    }
+
+    public Object getHotWorkshopOrdersForCook() {
+        return new Object();
+    }
+
+    public Object getColdWorkshopOrdersForCook() {
+        return new Object();
+    }
+
+    public Object getBarOrdersForCook() {
+        return new Object();
+    }
+
+    public Object getOrdersForWaiter() {
+        return new Object();
     }
 }

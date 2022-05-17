@@ -1,0 +1,1 @@
+ALTER TABLE orders ADD waiter_called BOOLEAN NOT NULL DEFAULT FALSE;

@@ -1,6 +1,6 @@
-package ru.nstu.sysordbackend.entity;
+package ru.nstu.sysordbackend.entity.order;
 
-import ru.nstu.sysordbackend.model.OrderModel;
+import ru.nstu.sysordbackend.entity.user.UserEntity;
 
 import javax.persistence.*;
 import java.util.List;
@@ -13,6 +13,9 @@ public class OrderEntity {
     @Column(name = "id", nullable = false, insertable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(name = "waiter_called", nullable = false, insertable = false)
+    private Boolean waiterCalled;
 
     @ManyToOne
     @JoinColumn(name = "table_id")
@@ -52,5 +55,13 @@ public class OrderEntity {
 
     public List<OrderItemEntity> getOrderItems() {
         return orderItems;
+    }
+
+    public Boolean getWaiterCalled() {
+        return waiterCalled;
+    }
+
+    public void setWaiterCalled(Boolean waiterCalled) {
+        this.waiterCalled = waiterCalled;
     }
 }

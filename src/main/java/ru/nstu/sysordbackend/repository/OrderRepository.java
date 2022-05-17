@@ -1,7 +1,7 @@
 package ru.nstu.sysordbackend.repository;
 
 import org.springframework.data.repository.CrudRepository;
-import ru.nstu.sysordbackend.entity.OrderEntity;
+import ru.nstu.sysordbackend.entity.order.OrderEntity;
 
 import java.util.Optional;
 
