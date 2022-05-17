@@ -84,7 +84,7 @@ public class OrderItemEntity {
         return waiter;
     }
 
-    public OrderItemStatusEntity getStatus() {
-        return status;
+    public String getStatus() {
+        return status.getName();
     }
 }

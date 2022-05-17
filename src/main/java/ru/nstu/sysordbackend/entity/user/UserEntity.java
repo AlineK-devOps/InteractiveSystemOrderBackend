@@ -29,4 +29,36 @@ public class UserEntity {
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "cook")
     private List<OrderItemEntity> cookOrderItems;
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public List<OrderEntity> getOrders() {
+        return orders;
+    }
+
+    public List<UserRoleEntity> getUserRoles() {
+        return userRoles;
+    }
+
+    public List<OrderItemEntity> getWaiterOrderItems() {
+        return waiterOrderItems;
+    }
+
+    public List<OrderItemEntity> getCookOrderItems() {
+        return cookOrderItems;
+    }
 }

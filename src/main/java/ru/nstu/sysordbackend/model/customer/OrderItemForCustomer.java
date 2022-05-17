@@ -1,6 +1,6 @@
-package ru.nstu.sysordbackend.model;
+package ru.nstu.sysordbackend.model.customer;
 
-public class OrderItemModel {
+public class OrderItemForCustomer {
     private Long dishId;
     private Integer count;
 

@@ -5,8 +5,12 @@ import org.springframework.stereotype.Service;
 import ru.nstu.sysordbackend.entity.order.OrderEntity;
 import ru.nstu.sysordbackend.entity.order.OrderItemEntity;
 import ru.nstu.sysordbackend.entity.order.OrderItemStatusEntity;
-import ru.nstu.sysordbackend.model.OrderItemModel;
-import ru.nstu.sysordbackend.model.OrderModel;
+import ru.nstu.sysordbackend.model.cook.OrderForCook;
+import ru.nstu.sysordbackend.model.cook.OrderItemForCook;
+import ru.nstu.sysordbackend.model.customer.OrderItemForCustomer;
+import ru.nstu.sysordbackend.model.customer.OrderForCustomer;
+import ru.nstu.sysordbackend.model.waiter.OrderForWaiter;
+import ru.nstu.sysordbackend.model.waiter.OrderItemForWaiter;
 import ru.nstu.sysordbackend.repository.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +29,7 @@ public class OrderService {
 
     @Autowired
     private DishesRepository dishesRepository;
-    public void createOrder(OrderModel order) {
+    public void createOrder(OrderForCustomer order) {
         OrderEntity orderEntity;
         List<OrderItemEntity> orderList;
 
@@ -43,7 +47,7 @@ public class OrderService {
             orderRepository.save(orderEntity);
         }
 
-        for (OrderItemModel itemModel : order.getOrder()){
+        for (OrderItemForCustomer itemModel : order.getOrder()){
             for (int i = 0; i < itemModel.getCount(); i++){
                 OrderItemEntity itemEntity = new OrderItemEntity();
 
@@ -58,23 +62,102 @@ public class OrderService {
         orderRepository.save(orderEntity);
     }
 
-    public Object getOrdersForCook() {
-        return new Object();
+    public List<OrderForCook> getOrdersForCook() {
+        List<OrderForCook> orders = new ArrayList<>();
+
+        for (OrderEntity entity : orderRepository.findAll()){
+            OrderForCook order = new OrderForCook();
+
+            order.setTableId(entity.getTable().getId());
+            order.setOrder(OrderItemForCook.toModel(entity.getOrderItems()));
+
+            orders.add(order);
+        }
+
+        return orders;
     }
 
-    public Object getHotWorkshopOrdersForCook() {
-        return new Object();
+    public List<OrderForCook> getHotWorkshopOrdersForCook() {
+        List<OrderForCook> orders = new ArrayList<>();
+
+        for (OrderEntity entity : orderRepository.findAll()){
+            OrderForCook order = new OrderForCook();
+
+            order.setTableId(entity.getTable().getId());
+
+            List<OrderItemForCook> itemModels = new ArrayList<>();
+            for (OrderItemEntity itemEntity : entity.getOrderItems()){
+                String category = itemEntity.getDish().getCategory();
+                if (category.equals("HOT_ROLL") || category.equals("WOK") || category.equals("SOUP"))
+                    itemModels.add(OrderItemForCook.toModel(itemEntity));
+            }
+
+            if (!itemModels.isEmpty()){
+                order.setOrder(itemModels);
+                orders.add(order);
+            }
+        }
+        return orders;
     }
 
-    public Object getColdWorkshopOrdersForCook() {
-        return new Object();
+    public List<OrderForCook> getColdWorkshopOrdersForCook() {
+        List<OrderForCook> orders = new ArrayList<>();
+
+        for (OrderEntity entity : orderRepository.findAll()){
+            OrderForCook order = new OrderForCook();
+
+            order.setTableId(entity.getTable().getId());
+
+            List<OrderItemForCook> itemModels = new ArrayList<>();
+            for (OrderItemEntity itemEntity : entity.getOrderItems()){
+                String category = itemEntity.getDish().getCategory();
+                if (category.equals("SUSHI") || category.equals("ROLL") || category.equals("SNACK"))
+                    itemModels.add(OrderItemForCook.toModel(itemEntity));
+            }
+
+            if (!itemModels.isEmpty()){
+                order.setOrder(itemModels);
+                orders.add(order);
+            }
+        }
+        return orders;
     }
 
-    public Object getBarOrdersForCook() {
-        return new Object();
+    public List<OrderForCook> getBarOrdersForCook() {
+        List<OrderForCook> orders = new ArrayList<>();
+
+        for (OrderEntity entity : orderRepository.findAll()){
+            OrderForCook order = new OrderForCook();
+
+            order.setTableId(entity.getTable().getId());
+
+            List<OrderItemForCook> itemModels = new ArrayList<>();
+            for (OrderItemEntity itemEntity : entity.getOrderItems()){
+                String category = itemEntity.getDish().getCategory();
+                if (category.equals("DRINK"))
+                    itemModels.add(OrderItemForCook.toModel(itemEntity));
+            }
+
+            if (!itemModels.isEmpty()){
+                order.setOrder(itemModels);
+                orders.add(order);
+            }
+        }
+        return orders;
     }
 
-    public Object getOrdersForWaiter() {
-        return new Object();
+    public List<OrderForWaiter> getOrdersForWaiter() {
+        List<OrderForWaiter> orders = new ArrayList<>();
+
+        for (OrderEntity entity : orderRepository.findAll()){
+            OrderForWaiter order = new OrderForWaiter();
+
+            order.setTableId(entity.getTable().getId());
+            order.setOrder(OrderItemForWaiter.toModel(entity.getOrderItems()));
+
+            orders.add(order);
+        }
+
+        return orders;
     }
 }

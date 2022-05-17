@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import ru.nstu.sysordbackend.model.OrderModel;
+import ru.nstu.sysordbackend.model.customer.OrderForCustomer;
 import ru.nstu.sysordbackend.service.OrderService;
 
 @RestController
@@ -15,7 +15,7 @@ public class OrderController {
     OrderService orderService;
 
     @PostMapping("/order")
-    public ResponseEntity createOrder(@RequestBody OrderModel order){
+    public ResponseEntity createOrder(@RequestBody OrderForCustomer order){
         try{
             orderService.createOrder(order);
             return ResponseEntity.status(HttpStatus.OK).body("OK");

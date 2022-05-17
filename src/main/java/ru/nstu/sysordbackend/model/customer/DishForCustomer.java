@@ -1,11 +1,11 @@
-package ru.nstu.sysordbackend.model;
+package ru.nstu.sysordbackend.model.customer;
 
 import ru.nstu.sysordbackend.entity.dish.DishEntity;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class Dish {
+public class DishForCustomer {
     private Long id;
     private String category;
     private String name;
@@ -14,11 +14,11 @@ public class Dish {
     private Integer weight;
     private String imageUrl;
 
-    public static List<Dish> toModel(List<DishEntity> entity){
-        return entity.stream().map(Dish::toModel).collect(Collectors.toList());
+    public static List<DishForCustomer> toModel(List<DishEntity> entity){
+        return entity.stream().map(DishForCustomer::toModel).collect(Collectors.toList());
     }
-    public static Dish toModel(DishEntity entity){
-        Dish model = new Dish();
+    public static DishForCustomer toModel(DishEntity entity){
+        DishForCustomer model = new DishForCustomer();
 
         model.setId(entity.getId());
         model.setCategory(entity.getCategory());
