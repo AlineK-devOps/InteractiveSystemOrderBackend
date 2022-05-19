@@ -6,6 +6,8 @@ public class OrderForWaiter {
     private Long tableId;
     private List<OrderItemForWaiter> order;
 
+    private Boolean waiterCalled;
+
     public Long getTableId() {
         return tableId;
     }
@@ -20,5 +22,13 @@ public class OrderForWaiter {
 
     public void setOrder(List<OrderItemForWaiter> order) {
         this.order = order;
+    }
+
+    public Boolean getWaiterCalled() {
+        return waiterCalled;
+    }
+
+    public void setWaiterCalled(Boolean waiterCalled) {
+        this.waiterCalled = waiterCalled;
     }
 }

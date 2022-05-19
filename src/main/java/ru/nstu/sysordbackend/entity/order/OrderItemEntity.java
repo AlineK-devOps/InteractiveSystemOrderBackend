@@ -4,6 +4,7 @@ import ru.nstu.sysordbackend.entity.user.UserEntity;
 import ru.nstu.sysordbackend.entity.dish.DishEntity;
 
 import javax.persistence.*;
+import java.sql.Timestamp;
 
 @Entity
 @Table(name = "order_list")
@@ -13,6 +14,9 @@ public class OrderItemEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false, insertable = false)
     private Long id;
+
+    @Column(name = "order_time", nullable = false, insertable = false)
+    private Timestamp orderTime;
 
     @ManyToOne
     @JoinColumn(name = "order_id")
@@ -33,12 +37,6 @@ public class OrderItemEntity {
     @ManyToOne
     @JoinColumn(name = "status_id")
     private OrderItemStatusEntity status;
-
-    public static OrderItemEntity toEntity(){
-        OrderItemEntity entity = new OrderItemEntity();
-
-        return entity;
-    }
 
     public void setId(Long id) {
         this.id = id;
@@ -86,5 +84,13 @@ public class OrderItemEntity {
 
     public String getStatus() {
         return status.getName();
+    }
+
+    public Timestamp getOrderTime() {
+        return orderTime;
+    }
+
+    public void setOrderTime(Timestamp orderTime) {
+        this.orderTime = orderTime;
     }
 }

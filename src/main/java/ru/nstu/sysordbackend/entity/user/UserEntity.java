@@ -21,6 +21,7 @@ public class UserEntity {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "table")
     private List<OrderEntity> orders;
 
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<UserRoleEntity> userRoles;
 
